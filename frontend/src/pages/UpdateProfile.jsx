@@ -46,11 +46,12 @@ const UpdateProfile = () => {
     }, [data]);
 
     return (
-        <div>
+        <div className='h-screen w-full bg-black/90 flex justify-center items-center'>
 
 
             <form
                 onSubmit={handleUpdateProfile}
+                className='flex  items-center gap-5'
             >
 
 

@@ -23,8 +23,9 @@ const Todos = () => {
                 withCredentials: true
             });
         },
-        // staleTime: 8 * 1000,
-        // enabled: !!token, // Only run if token exists
+        staleTime: 60 * 1000,
+        cacheTime: 5 * 60 * 1000,
+
     });
 
 
@@ -41,6 +42,9 @@ const Todos = () => {
         },
         onSuccess: (data) => {
             console.log("add todo", data);
+            setTitle("")
+            setDescription("")
+            refetch()
         },
         onError: (error) => {
             console.log(error);
@@ -61,6 +65,7 @@ const Todos = () => {
         },
         onSuccess: (data) => {
             console.log("Todo deleted", data);
+            refetch();
         },
         onError: (error) => {
             console.log(error);
@@ -87,13 +92,14 @@ const Todos = () => {
     }
 
     return (
-        <div>
+        <div className='bg-black/90 h-full w-full flex flex-col '>
             {/* <button onClick={refetch}>Fetch Todos</button> */}
 
 
-            <div>
+            <div className='py-5 mx-auto'>
                 <form
-                    onClick={handleAddTodo}
+
+                    className='flex  items-center gap-5'
                 >
                     <div>
                         <input
@@ -101,6 +107,7 @@ const Todos = () => {
                             onChange={(e) => setTitle(e.target.value)}
                             type="text"
                             placeholder='Title'
+                            className='p-2 rounded-sm font-semibold'
                         />
                     </div>
                     <div>
@@ -110,16 +117,17 @@ const Todos = () => {
                             onChange={(e) => setDescription(e.target.value)}
                             type="text"
                             placeholder='description'
+                            className='p-2 rounded-sm font-semibold'
                         />
                     </div>
 
-                    <button >Add Todo</button>
+                    <button onClick={handleAddTodo} className='p-2 m-2 text-white bg-black rounded-md w-fit text-center'>Add Todo</button>
                 </form>
             </div>
 
             {data?.data && data?.data?.map((todo) => (
                 <div key={todo._id}>
-                    <div className='bg-gray-500 p-2 m-5 rounded-md flex justify-around items-center'>
+                    <div className='bg-black/80 text-white p-2 m-5 rounded-md flex justify-between items-center px-10'>
                         <Link to={`/todos/${todo?._id}`}>
                             <h1>title: {todo?.title}</h1>
                             <span>description: {todo?.description}</span>

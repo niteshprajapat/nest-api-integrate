@@ -57,9 +57,9 @@ const Profile = () => {
             {
                 <div className='flex justify-around items-center'>
                     <div>
-                        <h1>ID: {data?.data?._id}</h1>
-                        <h1>user: {data?.data?.name}</h1>
-                        <h1>Email: {data?.data?.email}</h1>
+                        <h1 className='text-[20px] font-bold'>ID: {data?.data?._id}</h1>
+                        <h1 className='text-[20px] font-bold'>user: {data?.data?.name}</h1>
+                        <h1 className='text-[20px] font-bold'>Email: {data?.data?.email}</h1>
                     </div>
                     <div className='flex flex-col gap-3'>
                         <button onClick={() => navigate(`/update/${id}`)} className='bg-blue-500 p-2 rounded-md text-white'>Update Profile</button>

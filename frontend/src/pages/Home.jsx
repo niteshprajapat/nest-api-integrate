@@ -26,19 +26,19 @@ const Home = () => {
     // }
 
     return (
-        <div>
+        <div className='flex flex-col justify-center items-center h-screen w-full'>
 
-            <div>
-                <Link to={'/todos'}>TODOS</Link>
+            <div className='p-2 m-2 text-white bg-black rounded-md w-fit'>
+                <Link to={'/todos'} className='text-center'>See all Todos</Link>
             </div>
 
 
             {
-                <div >
+                <div className='my-10'>
                     <Link to={`/profile/${user?._id}`}>
-                        <h1>ID: {user._id}</h1>
-                        <h1>user: {user.name}</h1>
-                        <h1>Email: {user.email}</h1>
+                        <h1 className='text-[20px] font-bold'>ID: {user._id}</h1>
+                        <h1 className='text-[20px] font-bold'>user: {user.name}</h1>
+                        <h1 className='text-[20px] font-bold'>Email: {user.email}</h1>
                     </Link>
                 </div>
             }
